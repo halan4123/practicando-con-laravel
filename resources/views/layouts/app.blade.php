@@ -12,6 +12,10 @@
 
     @include('partials.navigation')
 
+    @if (session('status'))
+        {{ session('status') }}
+    @endif
+
     @yield('content')
 
 </body>
