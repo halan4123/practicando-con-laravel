@@ -22,6 +22,7 @@ Route::get('/blog/{post_Id}', [PostController::class, 'show'])->name('posts.show
 
 Route::get('/blog/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 
-
+//PUT ES PARA REMPLAZAR UN REGISTRO Y PATCH PARA ACTUALIZAR
+Route::patch('/blog/{post_Id}', [PostController::class, 'update'])->name('posts.update');
 
 Route::view('/about', 'about')->name('about');

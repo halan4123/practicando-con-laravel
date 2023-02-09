@@ -71,4 +71,28 @@ class PostController
 
         return view('posts.edit', ['post' => $post]);
     }
+
+    public function update(Request $request, Post $post)
+    {
+
+        //Con el Post en la parte de arriba es lo mismo que esto -> Post::findOrFail($post_Id);
+        //validaciones
+        $request->validate([
+            'titulo' => ['required', 'min:4'],
+            'body' => ['required'],
+        ], [
+            'titulo.required' => 'Error diferente :attribute'
+        ]);
+
+        //Aqui estaos usando el modelo
+
+        $post->titulo = $request->input('titulo');
+        $post->body = $request->input('body');
+
+        $post->save();
+
+        session()->flash('status', 'Post Update');
+
+        return redirect()->route('posts.show', $post);
+    }
 }
