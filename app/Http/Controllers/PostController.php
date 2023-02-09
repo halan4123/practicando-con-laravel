@@ -64,11 +64,11 @@ class PostController
         return redirect()->route('posts.index');
     }
 
-    public function edit(Post $post_id)
+    public function edit(Post $post)
     {
 
         //Con el Post en la parte de arriba es lo mismo que esto -> Post::findOrFail($post_Id);
 
-        return view('posts.edit', ['post' => $post_id]);
+        return view('posts.edit', ['post' => $post]);
     }
 }
